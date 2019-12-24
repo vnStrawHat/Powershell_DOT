@@ -6,7 +6,8 @@ import argparse
 from df_util import *
 import subprocess
 
-def check_nessesery_environment_setting():
+
+def check_necessary_environment_setting():
     print("[INFO] Check nessesery windows environment setting")
     cmd = 'powershell -inputformat none -outputformat text -NonInteractive -Command "Get-MpPreference | select -ExpandProperty \"DisableRealtimeMonitoring\""'
     check_windows_defender_enable = subprocess.check_output(cmd, timeout=5, stderr=subprocess.STDOUT)
@@ -99,12 +100,14 @@ def main():
     parser.add_argument('-force', '--force-run', help='[Need admin right] Disable Windows Defender realtime monitor and Set Powershell ExecutePolicy to Bypass', action='store_true')
     parser.add_argument('-d', '--debug', help='Enable DEBUG. All temp file will not delete', action='store_true')
     args = parser.parse_args()
+
+    check_necessary_environment_setting()
+
     if args.force_run:
         disable_windows_defender_realtime_monitor()
         set_ps_exec_policy_bypass()
 
     if args.file:
-        check_nessesery_environment_setting()
         input_file = args.file
         output_file = args.out_file
 
