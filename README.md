@@ -1,4 +1,4 @@
-# Powershell_DF (Powershell Deobfuscate)
+# Powershell_DOT (Powershell De-Obfuscation Tool)
 
 ## How to use ?
 
