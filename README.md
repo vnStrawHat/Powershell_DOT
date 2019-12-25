@@ -139,6 +139,9 @@ Invoke-Obfuscation cung cấp 5 Module bao gồm:
 Module TOKEN và AST :
 Bản chất của 2 module này là dùng powershell format string nên có thể dễ dàng xử lý
 
+Dữ liệu mẫu:
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/string_concat_input_script.PNG?raw=true)
+
 Module STRING:
 
 - Concatenate entire command
