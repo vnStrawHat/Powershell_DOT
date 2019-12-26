@@ -1,3 +1,4 @@
+
 # Powershell_DOT (Powershell De-Obfuscation Tool)
 
 ## How to use ?
@@ -147,15 +148,25 @@ Module STRING:
 
 - Concatenate entire command
 
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/string_concat_output.PNG?raw=true)
+
 - Reorder entire command after concatenating
 
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/string_reorder_output.png?raw=true)
+
 - Reverse entire command after concatenating
+
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/string_reverse_output.png?raw=true)
 
 Module ENCODING:
 
 - Encode entire command as ASCII
 
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/encoding_ascii_output.png?raw=true)
+
 - Encode entire command as Hex
+
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/encoding_hex_output.png?raw=true)
 
 - Encode entire command as Octal
 
@@ -163,11 +174,20 @@ Module ENCODING:
 
 - Encrypt entire command as SecureString (AES)
 
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/encoding_securestring_output.png?raw=true)
+
 - Encode entire command as BXOR
+
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/encoding_bxor_output.png?raw=true)
 
 - Encode entire command as Special Characters
 
+>***Riêng cái này thì chưa tìm được phương án xử lý***
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/encoding_Special_Characters_output.png?raw=true)
+
 - Encode entire command as Whitespace
+
+![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/encoding_whitespace_output.png?raw=true)
 
 Như các output trên, chung ta có thể thấy rằng tất cả đều sử dụng IEX để thực thi đoạn script đã được obfuscated.
 
@@ -189,7 +209,7 @@ Chuỗi IEX hoặc Invoke-Expression có thể được obfuscated thành các c
 - `& ( $shellId[1]+$sHelLId[13]+'X')`
 
 Tìm hiểu thêm về Invoke-Expression (IEX - [https://ss64.com/ps/invoke-expression.html](https://ss64.com/ps/invoke-expression.html)).
-IEX cho phép powershell thực thi một đoạn code được truyền vào. đoạn code có thể là một chuỗi code block hoặc một biến đã được định nghĩa và cả hai đều phải valid với PowerShell expression. Điều này có nghĩa là:
+IEX cho phép powershell thực thi một đoạn code được truyền vào. Đoạn code có thể là một chuỗi script block hoặc một biến đã được định nghĩa và cả hai đều phải hợp lệ với PowerShell expression. Điều này có nghĩa là:
 
 - Đoạn code truyền vào cho IEX cần phải là 1 đoạn script block có thể thực thi
 - Tất cả các hàm được sử dụng cho việc Obfuscate như replace, reverse, join, concat, decompress, join, bxor, char, toint16... đều xuất hiện trên đoạn code đầu vào cho IEX
@@ -198,7 +218,10 @@ IEX cho phép powershell thực thi một đoạn code được truyền vào. �
 Đoạn này hơi khó hiểu, đại khái là đang không biết diễn giải như thế nào cho dễ hiểu :D
 Sương sương như sau:
 
-Lợi dụng điều đó, thay vì truyền vào cho IEX để thực thi, chúng ta sẽ thay thế IEX bằng một hàm khác để print đoạn code đấy ra nhưng vẫn thực thi các hàm bên trong. Lợi ích của việc focus vào IEX thay vì focus vào xử lý các hàm sử dụng để obfuscate là:
+
+Lợi dụng điều đó, thay vì truyền vào cho IEX để thực thi đoạn script block, chúng ta sẽ thay thế IEX bằng một hàm khác để print đoạn script block đấy ra nhưng vẫn thực thi các hàm bên trong. 
+
+Tại sao lại focus vào IEX thay vì focus vào xử lý các hàm sử dụng để obfuscate ?
 
 - Powershell sẽ tự động thực thi các hàm obfuscate và cho ra clear output mà không cần phải xử lý ở ngoài.
 - Không cần quan tâm hàm obfuscate là hàm gì, mọi việc đã có powershell.exe lo :)
@@ -210,4 +233,4 @@ Một số option sau có thể chọn:
 - `Write-Output -InputObject <code>` => output to console
 - `Out-String -InputObject <code>` => output to console
 
-Sau khá nhiều thử nghiệm thì phát hiện ra sử dụng **_output to file_** là OK nhất, với một số case thì sử dụng **_output to console_** gây ra hiện tượng bị mất ký tự xuống dòng dẫn đến format đoạn script gốc bị sai lệch
+Sau khá nhiều thử nghiệm thì phát hiện ra sử dụng **_output to file_** là OK nhất, với một số case thì sử dụng **_output to console_** gây ra hiện tượng bị mất ký tự xuống dòng `\r` `\n` dẫn đến format đoạn script gốc bị sai lệch.
