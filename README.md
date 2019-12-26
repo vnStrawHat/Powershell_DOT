@@ -327,7 +327,7 @@ Quay lại bài toán đang gặp phải, áp dụng mô hình **Sequence to Seq
 Bước tiếp theo là phải chọn một thư viện Machine Learning để dùng . Đọc Tensorflow và CNTK phức tạp quá nên quyết định chọn một thư viện High Level hơn. Keras.io chắc phổ biến nhất.
 
 Sau một hồi đọc document thì ... mình méo hiểu gì cả. Vậy là mình quyết định ...**Edit from example is best.**
-Chọn một ví dụ ngắn nhất. here https://github.com/santhoshmani888/Keras-SEQ2SEQ-NMT-english-french
+Chọn một ví dụ ngắn nhất và chính chủ: https://keras.io/examples/lstm_seq2seq/
 
 Hình như có gì sai sai. OK hiện đang không có dữ liệu input để train. Mà không có dữ liệu để train thì Machine Learning cái gì
 
