@@ -9,7 +9,7 @@ python powershelldf.py -h
 
 ## The Goal ?
 
-Tool này sinh ra để defeat Invoke-Obfuscation :)
+Tool này sinh ra để defeat Invoke-Obfuscation :confused:
 
 ## The history ?
 
@@ -17,7 +17,7 @@ Tool này sinh ra để defeat Invoke-Obfuscation :)
 
 Trong quá trình thực hiện điều tra một số case APT, mình gặp khá nhiều các trường hợp Attacker sử dụng powershell one-liner để cài backdoor vào máy tính người dùng và máy chủ. Dĩ nhiên đa số các trường hợp đoạn powershell đều bị obfuscated. Cá biệt có những case powershell script bị obfuscated đến 7 lần.
 
-Ban đầu mình viết tool này để giải quyết mấy trường hợp các biệt trên. Nhưng sau khi thử nghiệm trên nhiều mẫu powershell obfuscated khác nhau thì nhận ra: "tool mình viết hoạt động tốt hơn mong đợi :D" nên quyết định thêm một vài tính năng nữa nhìn cho nó xịn xò hơn. Ví dụ ứng dụng Machine Learning vào việc Deobfuscate. Nghe có vẻ vãi nhỉ ? watch till the end (rofl)
+Ban đầu mình viết tool này để giải quyết mấy trường hợp các biệt trên. Nhưng sau khi thử nghiệm trên nhiều mẫu powershell obfuscated khác nhau thì nhận ra: "tool mình viết hoạt động tốt hơn mong đợi :D" nên quyết định thêm một vài tính năng nữa nhìn cho nó xịn xò hơn. Ví dụ ứng dụng Machine Learning vào việc Deobfuscate. Nghe có vẻ vãi nhỉ ? watch till the end :shit:
 
 Target mình nhắm đến đầu tiên là Invoke-Obfuscation cũng là tool mà đa số các mẫu mình gặp phải sử dụng để obfuscate powershell script.
 
@@ -125,7 +125,7 @@ At line:1 char:1
 **Phương án giải quyết:**
 
 - Dùng string replace xóa hết các ký tự **_`` ` ``_** là xong :)
-- Có thể thêm bước tìm kiếm các **_Special Characters_** trước khi replate để đảm bảo script không bị **_lỗi_** khi đoạn script print ra một cái gì đó kiểu như `` Xuống dòng nhé `n OK `` thì lại thành `Xuống dòng nhé n OK` :D
+- Có thể thêm bước tìm kiếm các **_Special Characters_** trước khi replate để đảm bảo script không bị **_lỗi_** khi đoạn script print ra một cái gì đó kiểu như `` Xuống dòng nhé `n OK `` thì lại thành `Xuống dòng nhé n OK` :grin:
 
 ### Invoke-Expression
 
@@ -212,19 +212,53 @@ Tìm hiểu thêm về Invoke-Expression (IEX - [https://ss64.com/ps/invoke-expr
 IEX cho phép powershell thực thi một đoạn code được truyền vào. Đoạn code có thể là một chuỗi script block hoặc một biến đã được định nghĩa và cả hai đều phải hợp lệ với PowerShell expression. Điều này có nghĩa là:
 
 - Đoạn code truyền vào cho IEX cần phải là 1 đoạn script block có thể thực thi
-- Tất cả các hàm được sử dụng cho việc Obfuscate như replace, reverse, join, concat, decompress, join, bxor, char, toint16... đều xuất hiện trên đoạn code đầu vào cho IEX
-- Đoạn code đầu vào cho IEX sẽ có giá trị bằng với đoạn script gốc sau khi thực thi các hàm Obfuscate như replace, reverse, join, concat, decompress, join, bxor, char, toint16...
+- Tất cả các hàm được sử dụng cho việc Obfuscate như `replace` `reverse` `join` `concat` `decompress` `join` `bxor` `[char]` `toint16`... đều xuất hiện trên đoạn code đầu vào cho IEX
+- Đoạn code đầu vào cho IEX sẽ có giá trị bằng với đoạn script gốc sau khi thực thi các hàm Obfuscate như `replace` `reverse` `join` `concat` `decompress` `join` `bxor` `[char]` `toint16`...
 
-Đoạn này hơi khó hiểu, đại khái là đang không biết diễn giải như thế nào cho dễ hiểu :D
-Sương sương như sau:
+Đoạn này hơi khó hiểu, đại khái là đang không biết diễn giải như thế nào cho dễ hiểu :confused: Sương sương như ví dụ sau:
 
+```powershell
+IEX( ( '36{78Q55@32t61_91{99@104X97{114Q91-32t93}32t93}32t34@110m111@105}115X115-101m114_112@120@69-45{101@107X111m118m110-73Q124Q32X41Q57@51-93Q114_97_104t67t91{44V39Q112_81t109@39}101{99@97}108{112}101}82_45m32_32X52{51Q93m114@97-104{67t91t44t39V98t103V48t39-101}99}97V108}112t101_82_45{32@41X39{41_112t81_109_39m43{39-110t101@112{81t39X43@39t109_43t112_81Q109t101X39Q43m39}114Q71_112{81m109m39@43X39V32Q40}32m39_43_39{114-111m108t111t67{100m110{117Q39_43m39-111-114Q103_101t114@39m43-39{111t70-45}32m41}98{103V48V110Q98t103{48@39{43{39-43{32t98m103_48{111@105t98@103V48-39@43{39_32-32V43V32}32t98t103@48X116m97V99t98X103t48_39V43m39@43-39X43Q39_98@103@48}115V117V102Q98V79m45@98m39Q43{39X103_39X43Q39V48}43-39}43t39}98-103{48V101_107Q39t43X39_111X118X110V39X43}39t98_103{48@43}32_98{103}48{73{98-39@43t39m103_39}43{39{48Q32t39X43X39-32{40V32t41{39Q43V39m98X103{39_43V39{48-116{115Q79{39_43_39}98}103m48{39Q43t39X32X43{32_98@103-39@43m39X48_72-39_43t39V45m39t43Q39_101Q98}103_48-32_39Q43V39V32t39V43}39m43Q32V98X39Q43_39@103_48V39@43Q39@116X73t82V119m98-39{43_39}103Q48X40_46_32m39}40_40{34t59m91@65V114V114@97_121}93Q58Q58V82Q101Q118Q101{114}115_101m40_36_78m55@32t41t32-59{32}73{69V88m32{40t36V78t55}45Q74m111@105-110m32X39V39-32}41'.SpLiT( '{_Q-@t}mXV' ) |ForEach-Object { ([Int]$_ -AS [Char]) } ) -Join'' )
+```
+Phía trên là một script powershell đã bị obfuscate
 
-Lợi dụng điều đó, thay vì truyền vào cho IEX để thực thi đoạn script block, chúng ta sẽ thay thế IEX bằng một hàm khác để print đoạn script block đấy ra nhưng vẫn thực thi các hàm bên trong. 
+Thay vì thực thi đoạn script block bên trong bằng IEX, chung ta sẽ thay IEX bằng Write-Host để print giá trị của chuỗi script block ra màn hình:
+```console
+PS C:\>Write-Host(  ( '36{78Q55@32t61_91{99@104X97{114Q91-32t93}32t93}32t34@110m111@105}115X115-101m114_112@120@69-45{101@107X111m118m110-73Q124Q32X41Q57@51-93Q114_97_104t67t91{44V39Q112_81t109@39}101{99@97}108{112}101}82_45m32_32X52{51Q93m114@97-104{67t91t44t39V98t103V48t39-101}99}97V108}112t101_82_45{32@41X39{41_112t81_109_39m43{39-110t101@112{81t39X43@39t109_43t112_81Q109t101X39Q43m39}114Q71_112{81m109m39@43X39V32Q40}32m39_43_39{114-111m108t111t67{100m110{117Q39_43m39-111-114Q103_101t114@39m43-39{111t70-45}32m41}98{103V48V110Q98t103{48@39{43{39-43{32t98m103_48{111@105t98@103V48-39@43{39_32-32V43V32}32t98t103@48X116m97V99t98X103t48_39V43m39@43-39X43Q39_98@103@48}115V117V102Q98V79m45@98m39Q43{39X103_39X43Q39V48}43-39}43t39}98-103{48V101_107Q39t43X39_111X118X110V39X43}39t98_103{48@43}32_98{103}48{73{98-39@43t39m103_39}43{39{48Q32t39X43X39-32{40V32t41{39Q43V39m98X103{39_43V39{48-116{115Q79{39_43_39}98}103m48{39Q43t39X32X43{32_98@103-39@43m39X48_72-39_43t39V45m39t43Q39_101Q98}103_48-32_39Q43V39V32t39V43}39m43Q32V98X39Q43_39@103_48V39@43Q39@116X73t82V119m98-39{43_39}103Q48X40_46_32m39}40_40{34t59m91@65V114V114@97_121}93Q58Q58V82Q101Q118Q101{114}115_101m40_36_78m55@32t41t32-59{32}73{69V88m32{40t36V78t55}45Q74m111@105-110m32X39V39-32}41'.SpLiT( '{_Q-@t}mXV' ) |ForEach-Object { ([Int]$_ -AS [Char]) } ) -Join'')
+
+$N7 =[char[ ] ] "noisserpxE-ekovnI| )93]rahC[,'pQm'ecalpeR-  43]rahC[,'bg0'ecalpeR- )')pQm'+'nepQ'+'m+pQme'+'rGpQm'+' ( '+'roloCdnu'+'orger'+'oF- )bg0nbg0'+'+ bg0oibg0'+'  +  bg0tacbg0'+'+'+'bg0sufbO-b'+'g'+'0+'+'bg0ek'+'ovn'+'bg0+ bg0Ib'+'g'+'0 '+' ( )'+'bg'+'0tsO'+'bg0'+' + bg'+'0H'+'-'+'ebg0 '+' '+'+ b'+'g0'+'tIRwb'+'g0(. '((";[Array]::Reverse($N7 ) ; IEX ($N7-Join '' )
+```
+
+Đoạn output script định nghĩa một biến có tên là `$N7`, sau đó biến này được truyền vào cho IEX để thực thi. Thử print biến `$N7` bằng cách thay IEX bằng Write-Host ta có kết quả như sau
+```console
+PS C:\> $N7 =[char[ ] ] "noisserpxE-ekovnI| )93]rahC[,'pQm'ecalpeR-  43]rahC[,'bg0'ecalpeR- )')pQm'+'nepQ'+'m+pQme'+'rGpQm'+' ( '+'roloCdnu'+'orger'+'oF- )bg0nbg0'+'+ bg0oibg0'+'  +  bg0tacbg0'+'+'+'bg0sufbO-b'+'g'+'0+'+'bg0ek'+'ovn'+'bg0+ bg0Ib'+'g'+'0 '+' ( )'+'bg'+'0tsO'+'bg0'+' + bg'+'0H'+'-'+'ebg0 '+' '+'+ b'+'g0'+'tIRwb'+'g0(. '((";[Array]::Reverse($N7 ) ; Write-Host ($N7-Join '' )
+
+((' .(0g'+'bwRIt'+'0g'+'b +'+' '+' 0gbe'+'-'+'H0'+'gb + '+'0gb'+'Ost0'+'gb'+') ( '+' 0'+'g'+'bI0gb +0gb'+'nvo'+'ke0gb'+'+0'+'g'+'b-Obfus0gb'+'+'+'0gbcat0gb  +  '+'0gbio0gb +'+'0gbn0gb) -Fo'+'regro'+'undColor'+' ( '+'mQpGr'+'emQp+m'+'Qpen'+'mQp)') -Replace'0gb',[Char]34  -Replace'mQp',[Char]39) |Invoke-Expression
+```
+
+Thấy sự xuất hiện của Invoke-Expression. tiếp tục thay Invoke-Expression bằng Write-Host ta có kết quả như sau:
+
+```console
+PS C:\> ((' .(0g'+'bwRIt'+'0g'+'b +'+' '+' 0gbe'+'-'+'H0'+'gb + '+'0gb'+'Ost0'+'gb'+') ( '+' 0'+'g'+'bI0gb +0gb'+'nvo'+'ke0gb'+'+0'+'g'+'b-Obfus0gb'+'+'+'0gbcat0gb  +  '+'0gbio0gb +'+'0gbn0gb) -Fo'+'regro'+'undColor'+' ( '+'mQpGr'+'emQp+m'+'Qpen'+'mQp)') -Replace'0gb',[Char]34  -Replace'mQp',[Char]39)| Write-Host
+ 
+ .("wRIt" +  "e-H" + "Ost") (  "I" +"nvoke"+"-Obfus"+"cat"  +  "io" +"n") -ForegroundColor ( 'Gre'+'en')
+```
+Dễ nhận thấy đoạn output sử dụng string concat. Sau khi cộng các chuỗi lại ta có đoạn script block gốc như sau:
+```powershell
+Write-Host "Invoke-Obfuscation" -ForegroundColor Green
+```
+
+Qua ví dụ trên chung ta có thể thấy:
+
+- Đoạn script block được truyền vào cho IEX chắc chắn thực thi được
+- Các hàm như `replace` `reverse` `join` `concat` `decompress` `join` `bxor` `[char]` `toint16`... sẽ được powershell thực thi khi thực hiện print đoạn script block đấy ra màn hình thay thì thực thi bằng IEX
+
+Lợi dụng điều đó, thay vì truyền vào cho IEX để thực thi đoạn script block, chúng ta sẽ thay thế IEX bằng một hàm khác để print đoạn script block đấy ra mà không thực thi cả cụm script block đó.
 
 Tại sao lại focus vào IEX thay vì focus vào xử lý các hàm sử dụng để obfuscate ?
-
-- Powershell sẽ tự động thực thi các hàm obfuscate và cho ra clear output mà không cần phải xử lý ở ngoài.
-- Không cần quan tâm hàm obfuscate là hàm gì, mọi việc đã có powershell.exe lo :)
+- xử lý các hàm `replace` `reverse` `join` `concat` `decompress` `join` `bxor` `[char]` `toint16` quá phưc tạp
+- Powershell sẽ tự động thực thi các hàm obfuscate và cho ra clear output mà không cần phải xử lý gì thêm khi print đoạn script block ra ngoài màn hình
+- Không cần quan tâm hàm obfuscate là hàm gì, mọi việc đã có powershell.exe lo :kissing:
 
 Một số option sau có thể chọn:
 
