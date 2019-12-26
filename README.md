@@ -11,7 +11,7 @@ python powershelldf.py -h
 
 Tool này sinh ra để defeat Invoke-Obfuscation :confused: mặc dù kết quả khi PK với ***quỳ*** khi Invoke-Obfuscation sử dụng chiêu Ultimate ***`Encoding with Special Characters`*** :broken_heart:
 
-Nghịch Machine Learning để xem nó là cái gì 🤔?
+Nghịch Machine Learning để xem nó là cái gì :thinking:?
 
 ## The history ?
 
@@ -53,7 +53,7 @@ Sử dụng Format String: ("{2}{0}{3}{4}{1}" -f 'Obfus','n','Invoke-','cat','io
 Khi chạy trên powershell cli:
 
 ```shell
-PS C:\Users\trunglt> ("{2}{0}{3}{4}{1}" -f 'Obfus','n','Invoke-','cat','io')
+PS C:\Users\TrungKFC> ("{2}{0}{3}{4}{1}" -f 'Obfus','n','Invoke-','cat','io')
 Invoke-Obfuscation
 ```
 
@@ -72,7 +72,7 @@ Sử dụng Format String: ("Inv" +"oke-" + "Obfusca" + "tion")
 Khi chạy trên powershell cli:
 
 ```shell
-PS C:\Users\trunglt> ("Inv" +"oke-" + "Obfusca" + "tion")
+PS C:\Users\TrungKFC> ("Inv" +"oke-" + "Obfusca" + "tion")
 Invoke-Obfuscation
 ```
 
@@ -106,14 +106,14 @@ Tuy nhiên, nêu sau ký tự **`` ` ``** không phải là các ký tự như t
 Ví dụ 1:
 
 ```console
-PS C:\Users\trunglt> Wr`it`e-Host "Hello"
+PS C:\Users\TrungKFC> Wr`it`e-Host "Hello"
 Hello
 ```
 
 Ví dụ 2:
 
 ```console
-PS C:\Users\trunglt> Write-Hos`t "Hello"
+PS C:\Users\TrungKFC> Write-Hos`t "Hello"
 Write-Hos        : The term 'Write-Hos  ' is not recognized as the name of a cmdlet, function, script file, or operable
 program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 At line:1 char:1
@@ -366,8 +366,10 @@ ActIVediRECTORycoMpuTErS	ActiveDirectoryComputers
 ....
 ```
 ## 3. Train
-Loay hoay với Azure Machine Learning mãi không work. Mình quyết định chuyển sang Google Cloud Platform, cũng tiện đang có $200 trial bên GCP.
-Sau khi traing 7 ngày 7 đêm thì được một model dung lượng 5,1 mb với các thông số sau.
+Loay hoay với Azure Machine Learning mãi không work. Mình quyết định chuyển sang Google Cloud Platform, cũng tiện đang có $200 trial bên GCP. Sau khi đọc xong loạt bài viết này http://liufuyang.github.io/2017/03/12/just-another-tensorflow-beginner-guide-1.html và sửa đi sửa lại thì nó cũng chạy được trên GCP.
+
+Sau khi traing 7 ngày 7 đêm (thật ra là sau khi chỉnh lại code để dùng GPU thì mất hơn 1 ngày :rofl:) thì được một model dung lượng 5,1 mb với các thông số sau.
+
 ```console
 Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
@@ -397,3 +399,9 @@ Non-trainable params: 0
 __________________________________________________________________________________________________
 >>>
 ```
+Mình train với tập 600000 mẫu, Cross Validation là 0.2 (80% để train, 20% để validation)
+Nội dung và các thông số mình print ra vậy thôi chứ cũng không hiểu lắm ý nghĩa của nó lắm, và cũng không đánh giá được chất lượt của model này như thế nào. Thử thì thấy `seen to be working` nên không đi sâu lắm cho việc tối ưu model.
+
+
+
+
