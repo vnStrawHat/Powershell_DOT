@@ -140,7 +140,8 @@ Module TOKEN và AST :
 Bản chất của 2 module này là dùng powershell format string nên có thể dễ dàng xử lý
 
 Dữ liệu mẫu:
-![enter image description here](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/string_concat_input_script.PNG?raw=true)
+
+![sample script block](https://github.com/vnStrawHat/Powershell_DOT/blob/master/images/string_concat_input_script.PNG?raw=true)
 
 Module STRING:
 
