@@ -3,23 +3,25 @@
 
 ## How to use ?
 
+Nên chạy tool trên môi trường máy ảo Windows độc lập vì tool có thể kích hoạt mã độc trong một vài trường hợp vãi lúa nào đó :grin:
+
 ```shell
 python powershelldf.py -h
 ```
 
 ## The Goal ?
 
-Tool này sinh ra để defeat Invoke-Obfuscation :confused: mặc dù kết quả khi PK với ***quỳ*** khi Invoke-Obfuscation sử dụng chiêu Ultimate ***`Encoding with Special Characters`*** :broken_heart:
+Tool này sinh ra để defeat Invoke-Obfuscation :confused: mặc dù kết quả khi <span style="color:red">PK</span> với ***quỳ*** khi Invoke-Obfuscation sử dụng chiêu Ultimate ***`Encoding with Special Characters`*** :broken_heart:
 
 Nghịch Machine Learning để xem nó là cái gì :thinking:?
 
-## The history ?
+## The History ?
 
 > Powershell attack đang hot trend gần đây bên quyết đị bú frame tí.
 
 Trong quá trình thực hiện điều tra một số case APT, mình gặp khá nhiều các trường hợp Attacker sử dụng powershell one-liner để cài backdoor vào máy tính người dùng và máy chủ. Dĩ nhiên đa số các trường hợp đoạn powershell đều bị obfuscated. Cá biệt có những case powershell script bị obfuscated đến 7 lần.
 
-Ban đầu mình viết tool này để giải quyết mấy trường hợp các biệt trên. Nhưng sau khi thử nghiệm trên nhiều mẫu powershell obfuscated khác nhau thì nhận ra: "tool mình viết hoạt động tốt hơn mong đợi :sunglasses:" nên quyết định thêm thắt một vài tính năng nữa nhìn cho nó xịn xò hơn. Ví dụ ứng dụng Machine Learning vào việc Deobfuscate. 
+Ban đầu mình viết tool này để giải quyết mấy trường hợp cá biệt trên. Nhưng sau khi thử nghiệm trên nhiều mẫu powershell obfuscated khác nhau thì nhận ra: "tool mình viết hoạt động tốt hơn mong đợi :sunglasses:" nên quyết định thêm thắt một vài tính năng nữa nhìn cho nó xịn xò hơn. Ví dụ ứng dụng Machine Learning vào việc Deobfuscate. 
 
 Nghe có vẻ vãi nhỉ ? watch/read till the end :shit:
 
@@ -402,8 +404,8 @@ ________________________________________________________________________________
 Mình train với tập 600000 mẫu, Cross Validation là 0.2 (80% để train, 20% để validation)
 Nội dung và các thông số mình print ra vậy thôi chứ cũng không hiểu lắm ý nghĩa của nó lắm, và cũng không đánh giá được chất lượt của model này như thế nào.
 
-# Mặc dù làm như sách như kết quả thì không thể tưởng tượng nổi.
-## It doesn't work :dizzy_face:.
-## Chắc học vẹt ML nên không biết sai ở đâu.
-## Thôi ta dừng lại :lying_face:
+## Mặc dù làm như sách như kết quả thì không thể tưởng tượng nổi :confused:.
+### It doesn't work :dizzy_face:.
+### Chắc học vẹt ML nên không biết sai ở đâu.
+### Thôi ta dừng lại :lying_face:
 
