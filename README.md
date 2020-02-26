@@ -11,7 +11,7 @@ python powershelldf.py -h
 
 ## The Goal ?
 
-Tool này sinh ra để defeat Invoke-Obfuscation :confused: mặc dù kết quả khi <span style="color:red">PK</span> với ***quỳ*** khi Invoke-Obfuscation sử dụng chiêu Ultimate ***`Encoding with Special Characters`*** :broken_heart:
+Tool này sinh ra để defeat Invoke-Obfuscation :confused: mặc dù kết quả khi **PK** với ***quỳ*** khi Invoke-Obfuscation sử dụng chiêu Ultimate ***`Encoding with Special Characters`*** :broken_heart:
 
 Nghịch Machine Learning để xem nó là cái gì :thinking:?
 
