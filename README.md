@@ -6,7 +6,10 @@
 Nên chạy tool trên môi trường máy ảo Windows độc lập vì tool có thể kích hoạt mã độc trong một vài trường hợp vãi lúa nào đó :grin:
 
 ```shell
-python powershelldf.py -h
+python powershell_dot.py -h
+python powershell_dot.py --base64 <base64 string> --out-file <path to output file>
+python powershell_dot.py --file <path to powershell obfuscated file> --out-file <path to output file>
+
 ```
 
 ## The Goal ?
