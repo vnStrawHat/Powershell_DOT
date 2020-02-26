@@ -375,7 +375,7 @@ Python 3.7.4 (tags/v3.7.4:e09359112e, Jul  8 2019, 20:34:20) [MSC v.1916 64 bit 
 Type "help", "copyright", "credits" or "license" for more information.
 >>> from keras.models import Model, load_model
 Using TensorFlow backend.
->>> model = load_model('C:\\Users\\HAN-IT-TEST-111\\Desktop\\Powershell_DeObfuscated\\seq2seq\\powershell.h5')
+>>> model = load_model('C:\\Users\\vnStrawHat\\Desktop\\Powershell_DeObfuscated\\seq2seq\\powershell.h5')
 >>> model.summary()
 Model: "model_1"
 __________________________________________________________________________________________________
@@ -400,8 +400,7 @@ ________________________________________________________________________________
 >>>
 ```
 Mình train với tập 600000 mẫu, Cross Validation là 0.2 (80% để train, 20% để validation)
-Nội dung và các thông số mình print ra vậy thôi chứ cũng không hiểu lắm ý nghĩa của nó lắm, và cũng không đánh giá được chất lượt của model này như thế nào. Thử thì thấy `seen to be working` nên không đi sâu lắm cho việc tối ưu model.
+Nội dung và các thông số mình print ra vậy thôi chứ cũng không hiểu lắm ý nghĩa của nó lắm, và cũng không đánh giá được chất lượt của model này như thế nào.
 
-
-
+# Mặc dù làm như sách như kết quả thì không thể tưởng tượng nổi. It doesn't work :dizzy_face:. Chắc học vẹt ML nên không biết sai ở đâu. Thôi ta dừng lại :lying_face:
 
