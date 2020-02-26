@@ -285,9 +285,9 @@ Sau khá nhiều thử nghiệm thì phát hiện ra sử dụng **_output to fi
 
 > Ghép nối các module xử lý `Format String`, `Special Characters`, `Invoke-Expression` lại ta có ***PowerShell_DOT***
 
-### Where is Machine Learning
+## Where is Machine Learning
 
-## 1. Chọn thuật toán
+### 1. Chọn thuật toán
 
 Sau khi chạy tool với một số powershell script, mình nhận ra một điều ngứa mắt. các keyword bị random uppercase lowercase. Ví dụ như:
 ```powershell
@@ -331,7 +331,7 @@ Chọn một ví dụ ngắn nhất và chính chủ: https://keras.io/examples/
 
 Hình như có gì sai sai. OK hiện đang không có dữ liệu input để train. Mà không có dữ liệu để train thì Machine Learning cái gì
 
-## 2. Tạo dữ liệu để train
+### 2. Tạo dữ liệu để train
 Mình thu thập được 950 script Powershell chuẩn Microsoft và dùng regex `[A-Za-z]{2,}` để lấy các keyword > 2 ký tự sau đó kiểm tra nếu có ký tự uppercase thì write ra một file wordlist.
 
 Sau khi có wordlist thì sử dụng powershell để tạo random Uppercase Lowercase cho mỗi word có trong wordlist
@@ -365,7 +365,7 @@ aCtIVedIrECTorycoMPUters	ActiveDirectoryComputers
 ActIVediRECTORycoMpuTErS	ActiveDirectoryComputers
 ....
 ```
-## 3. Train
+### 3. Train
 Loay hoay với Azure Machine Learning mãi không work. Mình quyết định chuyển sang Google Cloud Platform, cũng tiện đang có $200 trial bên GCP. Sau khi đọc xong loạt bài viết này http://liufuyang.github.io/2017/03/12/just-another-tensorflow-beginner-guide-1.html và sửa đi sửa lại thì nó cũng chạy được trên GCP.
 
 Sau khi traing 7 ngày 7 đêm (thật ra là sau khi chỉnh lại code để dùng GPU thì mất hơn 1 ngày :rofl:) thì được một model dung lượng 5,1 mb với các thông số sau.
@@ -402,5 +402,8 @@ ________________________________________________________________________________
 Mình train với tập 600000 mẫu, Cross Validation là 0.2 (80% để train, 20% để validation)
 Nội dung và các thông số mình print ra vậy thôi chứ cũng không hiểu lắm ý nghĩa của nó lắm, và cũng không đánh giá được chất lượt của model này như thế nào.
 
-# Mặc dù làm như sách như kết quả thì không thể tưởng tượng nổi. It doesn't work :dizzy_face:. Chắc học vẹt ML nên không biết sai ở đâu. Thôi ta dừng lại :lying_face:
+# Mặc dù làm như sách như kết quả thì không thể tưởng tượng nổi.
+## It doesn't work :dizzy_face:.
+## Chắc học vẹt ML nên không biết sai ở đâu.
+## Thôi ta dừng lại :lying_face:
 
